@@ -2,7 +2,10 @@ const fetch = require('node-fetch')
 const queryString = require('query-string')
 const crypto = require('crypto')
 
-exports.sourceNodes = ({ boundActionCreators, createNodeId }, configOptions) => {
+exports.sourceNodes = (
+  { boundActionCreators, createNodeId },
+  configOptions,
+) => {
   const { createNode } = boundActionCreators
 
   delete configOptions.plugins
@@ -22,8 +25,8 @@ exports.sourceNodes = ({ boundActionCreators, createNodeId }, configOptions) => 
       internal: {
         type: `HubspotPost`,
         content: nodeContent,
-        contentDigest: nodeContentDigest
-      }
+        contentDigest: nodeContentDigest,
+      },
     })
 
     return nodeData
@@ -41,7 +44,7 @@ exports.sourceNodes = ({ boundActionCreators, createNodeId }, configOptions) => 
 
   console.log(
     '\n  gatsby-source-hubspot\n  ------------------------- \n  Fetching posts from: \x1b[33m%s\x1b[0m',
-    `\n  ${API_ENDPOINT}\n`
+    `\n  ${API_ENDPOINT}\n`,
   )
 
   return fetch(API_ENDPOINT)
@@ -67,22 +70,19 @@ exports.sourceNodes = ({ boundActionCreators, createNodeId }, configOptions) => 
                 twitter: post.blog_post_author.twitter,
                 twitter_username: post.blog_post_author.twitter_username,
                 website: post.blog_post_author.website,
-                slug: post.blog_post_author.slug
+                slug: post.blog_post_author.slug,
               }
             : null,
           feature_image: {
-            url: post.feature_image,
-            alt_text: post.featured_image_alt_text
+            url: post.featured_image,
+            alt_text: post.featured_image_alt_text,
           },
-          meta: {
-            title: post.page_title,
-            description: post.meta_description
-          },
+          meta: { title: post.page_title, description: post.meta_description },
           summary: post.post_summary,
           published: post.publish_date,
           updated: post.updated,
           created: post.created,
-          slug: post.slug
+          slug: post.slug,
         }
       })
       cleanData.forEach(post => {
