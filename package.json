@@ -1,8 +1,11 @@
 {
-  "name": "gatsby-source-hubspot",
+  "name": "@wino/gatsby-source-hubspot",
   "description": "Gatsby source plugin",
   "repository": "https://github.com/lewisvrobinson/gatsby-source-hubspot.git",
-  "author": "Lewis Robinson <lewisvrobinson@gmail.com>",
+  "authors": [
+    "Lewis Robinson <lewisvrobinson@gmail.com>",
+    "Arnaud Allouis (Baloran) <arnaudallouis@wino.fr>"
+  ],
   "keywords": [
     "gatsby",
     "gatsby-plugin",
@@ -13,5 +16,5 @@
     "node-fetch": "^2.2.0",
     "query-string": "^6.1.0"
   },
-  "version": "1.0.0"
+  "version": "2.0.1"
 }
